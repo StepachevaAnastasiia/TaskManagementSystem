@@ -8,6 +8,7 @@ build/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
+.idea/misc.xml
 .idea/libraries/
 .idea/**
 *.iws
@@ -16,6 +17,9 @@ build/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+# Gradle:
+.idea/gradle.xml
+.idea/vcs.xml
 
 ### Eclipse ###
 .apt_generated
