@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.dto.CreateCommentRequest;
 import org.example.dto.CreateTaskRequest;
 import org.example.dto.UpdatePriorityRequest;
 import org.example.dto.UpdateStatusRequest;
@@ -9,11 +10,12 @@ import org.example.entity.Status;
 import org.example.entity.Task;
 import org.example.repository.CommentRepository;
 import org.example.repository.TaskRepository;
-import org.hibernate.ObjectNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Service
 public class TaskService {
     private final TaskRepository taskRepository;
     private final CommentRepository commentRepository;
@@ -61,10 +63,6 @@ public class TaskService {
         taskRepository.deleteById(id);
     }
 
-    public Comment addComment(Comment comment) {
-        return commentRepository.save(comment);
-    }
-
     public Task addTask(CreateTaskRequest task, long currentUserId) {
         return taskRepository.save(
                 new Task(null,
@@ -74,5 +72,14 @@ public class TaskService {
                         task.getPriority(),
                         currentUserId,
                         null));
+    }
+
+    public Comment addComment(CreateCommentRequest comment, long currentUserId, long taskId) {
+        return commentRepository.save(new Comment(
+                null,
+                comment.getText(),
+                currentUserId,
+                taskId
+        ));
     }
 }

@@ -2,7 +2,9 @@ package org.example.service;
 
 import org.example.entity.Person;
 import org.example.repository.PersonRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PersonService {
     private final PersonRepository personRepository;
 

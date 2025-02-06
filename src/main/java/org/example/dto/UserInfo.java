@@ -5,11 +5,7 @@ import lombok.Data;
 
 @Data
 public class UserInfo {
-    private Long id;
-    private String email;
+    private final Long id;
+    private final String email;
 
-    public UserInfo(Long id, String email) {
-        this.id = id;
-        this.email = email;
-    }
 }
